@@ -1,0 +1,6 @@
+email,password,expected_result
+nnero403@gmail.com,Hitesh@7890,success
+wrongemail@gmail.com,wrongpassword,failure
+nnero403@gmail.com,wrongpassword123,failure
+,wrongpassword123,failure
+nnero403@gmail.com,,failure
