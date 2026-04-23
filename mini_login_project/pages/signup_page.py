@@ -11,7 +11,7 @@ class SignupPage:
         self.error_message ="p[style='color: red;']"
 
     def navigate_to_signup_page(self):
-        self.page.click("a[href='/login'")
+        self.page.click("a[href='/login']")
 
     def enter_signup_details(self, name, email):
         self.page.fill(self.signup_name, name)
@@ -19,14 +19,22 @@ class SignupPage:
         self.page.click(self.signup_button)
 
     def fill_account_info(self, password):
-        self.page.fill(self.password_field, password)
-        self.page.click(self.create_account_button)
+        self.page.click("input[id='id_gender1']")
+        self.page.fill("input[id='password']", password)
+        self.page.fill("input[id='first_name']", "Test")
+        self.page.fill("input[id='last_name']", "User")
+        self.page.fill("input[id='address1']", "123 Test Street")
+        self.page.fill("input[id='state']", "Maharashtra")
+        self.page.fill("input[id='city']", "Mumbai")
+        self.page.fill("input[id='zipcode']", "400001")
+        self.page.fill("input[id='mobile_number']", "9999999999")
+        self.page.click("button[data-qa='create-account']")
 
     def get_error_message(self):
         return self.page.inner_text(self.error_message)
 
     def is_account_created(self):
-        return self.page.inner_text(self.account_created_text)
+        return self.page.url
 
 # navigate_to_signup -> goes to login/signup page
 # enter_signup_details -> fills name and email

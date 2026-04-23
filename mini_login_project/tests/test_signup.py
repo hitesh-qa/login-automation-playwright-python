@@ -1,20 +1,20 @@
 import pytest
-from mini_login_project.pages.signup_page import SignupPage
+from pages.signup_page import SignupPage
 
 def test_valid_signup(page):
     signup = SignupPage(page)
-    signup.navigate_to_signup()
+    signup.navigate_to_signup_page()
     signup.enter_signup_details(
         "TestUser123",
-        "testuser123unique@gmail.com"
+        "testusernew49865@gmail.com"
     )
     signup.fill_account_info("Test@1234")
     result = signup.is_account_created()
-    assert "ACCOUNT CREATED!" in result
+    assert "account_created" in result
 
 def test_signup_existing_email(page):
     signup = SignupPage(page)
-    signup.navigate_to_signup()
+    signup.navigate_to_signup_page()
     signup.enter_signup_details(
         "TestUser",
         "nnero403@gmail.com"

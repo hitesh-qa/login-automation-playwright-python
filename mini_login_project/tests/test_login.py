@@ -1,6 +1,6 @@
 import pytest
 import csv
-from mini_login_project.pages.login_page import LoginPage
+from pages.login_page import LoginPage
 
 def load_login_data():
     test_data = []
@@ -18,12 +18,13 @@ def test_login(page, email, password, expected):
     login.login(email, password)
 
     if expected == "success":
-        assert "My Account" in page.title()
+        assert "Logged in as" in page.inner_text("body")
     else:
-        error = login.get_error_message()
-        assert "Your email or password is incorrect" in error \
-                or error == "" \
-                or page.url =="https://www.automationexercise.com/login"
+        try:
+            error = login.get_error_message()
+            assert "inncorrect" in error or error == ""
+        except:
+            assert page.url =="https://www.automationexercise.com/login"
 
 # load_login_data -> reads all rows from CSV
 # @pytest.mark.parametrize -> runs test once for each row automatically
