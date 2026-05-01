@@ -7,7 +7,7 @@ class SignupPage:
         self.signup_button = "button[data-qa='signup-button']"
         self.password_field = "input[data-qa='password']"
         self.create_account_button = "button[data-qa='create-account']"
-        self.account_created_text ="b"
+        self.account_created_text ="[data-qa='account-created']"
         self.error_message ="p[style='color: red;']"
 
     def navigate_to_signup_page(self):

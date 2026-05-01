@@ -22,8 +22,9 @@ def test_login(page, email, password, expected):
     else:
         try:
             error = login.get_error_message()
-            assert "inncorrect" in error or error == ""
-        except:
+            assert "incorrect" in error or error == ""
+        except Exception as e:
+            print(f"Error: {e}")
             assert page.url =="https://www.automationexercise.com/login"
 
 # load_login_data -> reads all rows from CSV

@@ -10,6 +10,7 @@ def browser():
 
 @pytest.fixture(scope="function")
 def page(browser):
+    context = browser.new_context()
     page = browser.new_page()
     page.set_default_timeout(60000)
     page.goto("https://www.automationexercise.com")

@@ -1,12 +1,15 @@
 import pytest
 from pages.signup_page import SignupPage
+import time
+def generate_email():
+    return f"testuser{int(time.time())}@test.com"
 
 def test_valid_signup(page):
     signup = SignupPage(page)
     signup.navigate_to_signup_page()
     signup.enter_signup_details(
         "TestUser123",
-        "testusernew49865@gmail.com"
+        generate_email()
     )
     signup.fill_account_info("Test@1234")
     result = signup.is_account_created()
